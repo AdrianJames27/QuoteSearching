@@ -4,7 +4,7 @@ $(document).ready(function() {
     const txtInput = $('#txtInput');
     const csrfToken = $('meta[name="csrf-token"]').attr('content');
 
-    async function displayQuotes() {
+    async function displayAllQuotes() {
         $.ajax({
             url: '/quotes/all',
             method: 'GET',
@@ -34,12 +34,20 @@ $(document).ready(function() {
         });
     }
 
-    $(window).on('load', async function() {
-        await displayQuotes();
+    $(window).on('load', function() {
+        async function waitResponse() {
+            await displayAllQuotes();
+        }
+
+        waitResponse();
     });
 
-    searchForm.submit(async function(e) {
+    searchForm.submit(function(e) {
+        async function waitResponse() {
+            await getQuote(txtInput.val());
+        }
+
         e.preventDefault();
-        await getQuote(txtInput.val());
+        waitResponse();
     });
 });
