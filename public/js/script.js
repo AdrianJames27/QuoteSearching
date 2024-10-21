@@ -49,8 +49,6 @@ $(document).ready(function() {
         }
 
         waitResponse();
-
-        console.log('search');
     });
 
     searchForm.on('submit', function(e) {
@@ -61,7 +59,5 @@ $(document).ready(function() {
         }
 
         waitResponse();
-
-        console.log('form');
     });
 });
