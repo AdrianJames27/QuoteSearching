@@ -3,9 +3,6 @@
 use App\Http\Controllers\QuoteController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 Route::get('/', [QuoteController::class, 'index']);
 Route::get('/quotes/all', [QuoteController::class, 'getAllQuotes']);

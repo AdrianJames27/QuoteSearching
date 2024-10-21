@@ -1,7 +1,7 @@
 $(document).ready(function() {
     const quotesListContainer = $('#quotesListContainer');
-    const searchForm = $('#search-form');
-    const txtInput = $('#txtInput');
+    const searchForm = $('#searchForm');
+    const txtSearch = $('#txtSearch');
     const csrfToken = $('meta[name="csrf-token"]').attr('content');
 
     async function displayAllQuotes() {
@@ -21,6 +21,7 @@ $(document).ready(function() {
         $.ajax({
             url: '/quotes/search_result',
             method: 'POST',
+            contentType: 'application/json',
             data: JSON.stringify({
                 keyword: keyword,
                 _token: csrfToken
@@ -42,13 +43,25 @@ $(document).ready(function() {
         waitResponse();
     });
 
+    txtSearch.on('keyup', function(e) {
+        async function waitResponse() {
+            await getQuote(e.target.value);
+        }
+
+        waitResponse();
+
+        console.log('search');
+    });
+
     searchForm.on('submit', function(e) {
         e.preventDefault();
 
         async function waitResponse() {
-            await getQuote(txtInput.val());
+            await getQuote(txtSearch.val());
         }
 
         waitResponse();
+
+        console.log('form');
     });
 });
