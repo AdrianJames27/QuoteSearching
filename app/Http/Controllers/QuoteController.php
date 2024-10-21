@@ -21,7 +21,7 @@ class QuoteController extends Controller
     public function getQuotes(Request $request)
     {
         $keyword = $request->keyword;
-        $quotes = '';
+        $quotes = [];
         
         if ($keyword) {
             $quotes = Quote::where('quote', 'like', '%' . $keyword . '%')

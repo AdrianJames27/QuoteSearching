@@ -13,7 +13,7 @@
         @empty
             <div class="col-12">
                 <div class="alert alert-warning text-center" role="alert">
-                    <p>&times; No Quote/s Found.</p>
+                    <p>No Quote/s Found.</p>
                 </div>
             </div>
         @endforelse

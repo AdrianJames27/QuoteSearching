@@ -8,6 +8,5 @@ Route::get('/', function () {
 });
 
 Route::get('/', [QuoteController::class, 'index']);
-
 Route::get('/quotes/all', [QuoteController::class, 'getAllQuotes']);
 Route::post('/quotes/search_result', [QuoteController::class, 'getQuotes']);

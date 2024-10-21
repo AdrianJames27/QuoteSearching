@@ -42,12 +42,13 @@ $(document).ready(function() {
         waitResponse();
     });
 
-    searchForm.submit(function(e) {
+    searchForm.on('submit', function(e) {
+        e.preventDefault();
+
         async function waitResponse() {
             await getQuote(txtInput.val());
         }
 
-        e.preventDefault();
         waitResponse();
     });
 });
