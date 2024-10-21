@@ -26,7 +26,7 @@
                     <div class="search-container border rounded shadow-sm p-3">
                         <div class="search-wrapper">
                             <form id="searchForm" class="d-flex input-group">
-                                <input type="text" id="txtSearch" class="form-control" placeholder="Search for quotes or author" aria-label="Search">
+                                <input type="text" id="txtSearch" class="form-control" placeholder="Search for quotes or author">
                                 <button type="submit" class="btn btn-primary">Search</button>
                             </form>
                         </div>
