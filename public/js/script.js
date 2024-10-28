@@ -4,6 +4,8 @@ $(document).ready(function() {
     const txtSearch = $('#txtSearch');
     const csrfToken = $('meta[name="csrf-token"]').attr('content');
 
+    const waitResponse = async (callback) => await callback();
+
     async function displayAllQuotes() {
         $.ajax({
             url: '/quotes/all',
@@ -36,28 +38,15 @@ $(document).ready(function() {
     }
 
     $(window).on('load', function() {
-        async function waitResponse() {
-            await displayAllQuotes();
-        }
-
-        waitResponse();
+        waitResponse(displayAllQuotes());
     });
 
     txtSearch.on('keyup', function(e) {
-        async function waitResponse() {
-            await getQuote(e.target.value);
-        }
-
-        waitResponse();
+        waitResponse(getQuote(e.target.value));
     });
 
     searchForm.on('submit', function(e) {
         e.preventDefault();
-
-        async function waitResponse() {
-            await getQuote(txtSearch.val());
-        }
-
-        waitResponse();
+        waitResponse(getQuote(txtSearch.val()));
     });
 });
