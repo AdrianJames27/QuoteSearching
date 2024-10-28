@@ -23,11 +23,10 @@ $(document).ready(function() {
         $.ajax({
             url: '/quotes/search_result',
             method: 'POST',
-            contentType: 'application/json',
-            data: JSON.stringify({
+            data: {
                 keyword: keyword,
                 _token: csrfToken
-            }),
+            },
             success: function(response) {
                 quotesListContainer.html(response);
             },
@@ -38,15 +37,21 @@ $(document).ready(function() {
     }
 
     $(window).on('load', function() {
-        waitResponse(displayAllQuotes());
+        waitResponse(function() {
+            displayAllQuotes();
+        });
     });
 
     txtSearch.on('keyup', function(e) {
-        waitResponse(getQuote(e.target.value));
+        waitResponse(function() {
+            getQuote(e.target.value);
+        });
     });
 
     searchForm.on('submit', function(e) {
         e.preventDefault();
-        waitResponse(getQuote(txtSearch.val()));
+        waitResponse(function() {
+            getQuote(txtSearch.val());
+        });
     });
 });
